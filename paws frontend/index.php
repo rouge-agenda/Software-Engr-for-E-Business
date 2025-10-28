@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,6 +51,19 @@
     }
     nav a:hover {
       color: #6b8e23;
+    }
+    .user-logged-in {
+      text-decoration: none;
+      color: #1f4732;
+      font-size: 1.5rem;
+      font-weight: bold;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .user-logged-in:hover {
+      color: #6b8e23;
+      cursor: default;
     }
     .hero {
       background: url('background.jpg') center/cover no-repeat;
@@ -151,10 +168,19 @@
     <nav>
       <ul>
         <li><a href="#">Home</a></li>
-        <li><a href="register.html">Account</button></li>
+        <!-- Shows when logged in-->
+        <?php if (isset($_SESSION['user_id'])):  ?> 
+        <li><span class="user-logged-in">
+          Hello, <?php echo $_SESSION['user_name']; ?>
+        </span></li>
+        <li><a href="logout.php">Logout</a></li>
+        <?php else: ?>
+          <!-- Shows when not logged in-->
+          <li><a href="register.php">Account</a></li>
+        <?php endif; ?>
         <li><a href="#">About</a></li>
         <li><a href="#">Shop</a></li>
-        <li><a href="cart.html">Cart</a></li>
+        <li><a href="cart.php">Cart</a></li>
         </li>
       </ul>
     </nav>
