@@ -19,18 +19,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
   if ($result->num_rows == 1) {
     $user = $result->fetch_assoc();
 
-    if ($password == $user['password']) {   //TEMPORARY - plain text used for testing, need to change varchar length for hashed passwords
+    if (password_verify($password, $user['password'])) {
 
       $_SESSION['user_id'] = $user['custID'];
       $_SESSION['user_name'] = $user['fname'] . ' ' . $user['lname'];
       $_SESSION['user_email'] = $email;
 
+
+      //Display success message, allow user to return to homepage
       echo "<div style='background:rgb(212, 225, 237); color:rgb(22, 158, 192); padding: 10px; border-radius: 5px; margin-bottom: 20px auto; width: 300px; text-align: center; '>";
       echo "<strong>Login Successful!</strong><br>";
       echo "Welcome, " . $user['fname'] . "!<br>";
+      echo "<form method='GET' action='index.php'>";
+      echo "<button type='submit' style='background-color: rgb(212, 225, 237); color: rgb(255, 255, 255); padding: 3px; border: none; border-radius: 5px; cursor: pointer;'>Return to Homepage</button>";
+      echo "</form>";
       echo "</div>";
 
-      //Need to redirect to homepage or account page
     }
     else {    //if incorrect password
       echo "<div style='background: rgb(212, 225, 237); color: rgb(22, 158, 192); padding: 10px; border-radius: 5px; margin-bottom: 20px;'>";

@@ -1,5 +1,5 @@
 <?php
-// NEW 10/25/25 - Include database connection
+session_start();
 include('config/database.php');
 
 // DEBUG: Check if connection exists
@@ -22,18 +22,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
   $zip_code = $_POST['zip_code'];
   $phone = $_POST['phone'];
 
-  $hashed_password = $password; // Using plain text, NEEDS CHANGE to varchar length for hashed passwords
+  $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
   $sql = "INSERT INTO customer (fname, lname, email, password, street, city, state, zipcode, phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
   $stmt = $conn->prepare($sql);
   $stmt->bind_param("sssssssis", $first_name, $last_name, $email, $hashed_password, $street, $city, $state, $zip_code, $phone);
 
   if ($stmt->execute()) {
+
+    $_SESSION['user_id'] = $conn->insert_id;
+    $_SESSION['user_name'] = $first_name . ' ' . $last_name;
+    $_SESSION['user_email'] = $email;
   //Display current data
-  echo "<div style=' background:rgb(212, 225, 237); color:rgb(22, 158, 192); padding: 10px; border-radius: 5px; margin-bottom: 20px auto; width: 300px; text-align: center; margin-right: 20px; left: 50%;'>";
-  echo "<strong>Registration Successful!</strong><br>";
-  echo "Welcome, $first_name!<br>";
-  echo "Email: $email<br>";
+    echo "<div style=' background:rgb(212, 225, 237); color:rgb(22, 158, 192); padding: 10px; border-radius: 5px; margin-bottom: 20px auto; width: 300px; text-align: center; margin-right: 20px; left: 50%;'>";
+    echo "<strong>Registration Successful!</strong><br>";
+    echo "Welcome, $first_name!<br>";
+    echo "<form method='GET' action='index.php'>";
+    echo "<button type='submit' style='background-color: rgb(212, 225, 237); color: rgb(255, 255, 255); padding: 3px; border: none; border-radius: 5px; cursor: pointer;'>Return to Homepage</button>";
+    echo "</form>";
   echo "</div>";
   } else {
     echo "<div style=' background:rgb(212, 225, 237); color:rgb(22, 158, 192); padding: 10px; border-radius: 5px; margin-bottom: 20px auto; width: 300px; text-align: center; margin-right: 20px; left: 50%;'>";

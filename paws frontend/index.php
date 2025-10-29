@@ -176,7 +176,7 @@ session_start();
         <li><a href="logout.php">Logout</a></li>
         <?php else: ?>
           <!-- Shows when not logged in-->
-          <li><a href="register.php">Account</a></li>
+          <li><a href="login.php">Account</a></li>
         <?php endif; ?>
         <li><a href="#">About</a></li>
         <li><a href="#">Shop</a></li>
