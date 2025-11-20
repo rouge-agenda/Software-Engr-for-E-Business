@@ -140,6 +140,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     </form>
     <div class="link">
       <p>Already have an account? <a href="login.php">Login</a></p>
+      <p>Return to <a href="index.php">Home</a></p>
     </div>
   </div>
 </body>
