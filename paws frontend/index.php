@@ -178,8 +178,8 @@ session_start();
           <!-- Shows when not logged in-->
           <li><a href="register.php">Account</a></li>
         <?php endif; ?>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Shop</a></li>
+        <li><a href="about.php">About</a></li>
+        <li><a href="products.php">Shop</a></li>
         <li><a href="cart.php">Cart</a></li>
         </li>
       </ul>
@@ -198,17 +198,17 @@ session_start();
     <div class="card">
       <h3>Toys</h3>
       <p>Play Smart,<br> Play Green</p>
-      <button>Explore</button>
+      <button onclick="location.href='products.php?category=1'">Explore</button>
     </div>
     <div class="card">
       <h3>Food</h3>
       <p>Organic Nutrition for Pets</p>
-      <button>Explore</button>
+      <button onclick="location.href='products.php?category=2'">Explore</button>
     </div>
     <div class="card">
       <h3>Accessories</h3>
       <p>Smart Gear,<br> Eco Care</p>
-      <button>Explore</button>
+      <button onclick="location.href='products.php?category=3'">Explore</button>
     </div>
   </div>
   </section>

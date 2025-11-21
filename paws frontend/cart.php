@@ -1,7 +1,6 @@
 <?php
 session_start();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -85,33 +84,76 @@ session_start();
     .btn:hover {
       background-color: #2c5b44;
     }
+    
+    strong {
+      font-family: Arial, sans-serif;
+      color:#1f4732
+      text-align: left;
+      text-justify: inter-word;
+    }
+    
+    txt {
+      color: #1f4732;
+    }
+    span {
+      text-align: center;
+      text-justify: inter-word;
+    }
+    .cart {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid #dddddd
+    }
+    .price {
+      text-align: right;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <h2>Your Shopping Cart</h2>
-
     <table>
       <thead>
         <tr>
-          <th>Product</th>
-          <th>Quantity</th>
-          <th>Price</th>
-          <th>Remove</th>
+          <th>Items in cart</th>
         </tr>
       </thead>
+  </table>
+    <table>
       <tbody>
         <tr>
-          <td colspan="4" class="empty-message">Your cart is empty.</td>
+        <?php 
+        if (!isset($_SESSION['cart']) || count($_SESSION['cart']) == 0) {
+          echo "<p>Your cart is empty.</p>";
+        } else {
+          $total = 0;
+
+        foreach ($_SESSION['cart'] as $item) {
+          echo "<div class='cart'>";
+          echo "<strong>" . $item['productName'] . "</strong>";
+          echo "<price>" . "$" . $item['price'] . "</span>";
+          echo "<form action='remove_from_cart.php' method='POST' style='margin-top:8px;'>
+                  <input type ='hidden' name='index' value='{$index}'>
+                  <button type='submit' class='btn'>Remove</button>
+                  <br>
+                </form>";
+          echo "</div>";
+          $total += $item['price'];
+        }
+        }
+        ?>
         </tr>
       </tbody>
     </table>
-
-    <div class="total">Total: $0.00</div>
-
+    <?php
+    echo "<div class='total'>Total: $$total</div>";
+    ?>
     <div class="buttons">
-      <button class="btn" onclick="window.location.href='index.php'">Continue Shopping</button>
-      <button class="btn" disabled>Checkout</button>
+      <button class="btn" onclick="window.location.href='products.php'">Continue Shopping</button>
+      <button class="btn" onclick="window.location.href='index.php'">Home</button>
+      <button class="btn" onclick="window.location.href='checkout.php'">Checkout</button>
     </div>
   </div>
 </body>

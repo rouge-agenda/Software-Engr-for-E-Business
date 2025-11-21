@@ -26,7 +26,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
       $_SESSION['user_email'] = $email;
 
 
-      //Display success message, allow user to return to homepage
       echo "<div style='background:rgb(212, 225, 237); color:rgb(22, 158, 192); padding: 10px; border-radius: 5px; margin-bottom: 20px auto; width: 300px; text-align: center; '>";
       echo "<strong>Login Successful!</strong><br>";
       echo "Welcome, " . $user['fname'] . "!<br>";
@@ -131,6 +130,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     </form>
     <div class="link">
       <p>Don't have an account? <a href="register.php">Register</a></p>
+      <p>Return to <a href="index.php">Home</a></p>
     </div>
   </div>
 </body>
