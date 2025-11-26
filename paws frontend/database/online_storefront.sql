@@ -45,8 +45,8 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`custID`, `fName`, `lName`, `email`, `password`, `street`, `city`, `state`, `zipcode`, `phone`) VALUES
-(80265, 'Racheal', 'Oili-Sinclair', 'bigpuppylux@gmail.com', 'Ilovemydog123', '4056 Howard Street', 'Grand Rapids', 'Michigan', 49505, '616-901-7639'),
-(90234, 'Dilllon', 'Maldune', 'dmaldune39@yahoo.com', '$^xxjicats', '220 Upland Avenue', 'Lima', 'Ohio', 45801, '5673283585');
+(80265, 'Racheal', 'Oili-Sinclair', 'bigpuppylux@gmail.com', '$2y$10$xKUPBDJBU/lPcvQX4GuWOukFrx8hS0I2bntgCpgUuuBmOAPh8CdL.', '4056 Howard Street', 'Grand Rapids', 'Michigan', 49505, '616-901-7639'),
+(90234, 'Dilllon', 'Maldune', 'dmaldune39@yahoo.com', '$2y$10$I8zPK25GPoosziEcamq7xOKi7Smll/E.IZt4fy8/fEdZAK3Tz6oD2', '220 Upland Avenue', 'Lima', 'Ohio', 45801, '5673283585');
 
 -- --------------------------------------------------------
 
