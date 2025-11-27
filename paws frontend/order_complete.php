@@ -42,14 +42,18 @@ unset($_SESSION['order_total']);
         }
         .order-box {
             background: #1c4426;
+            color: rgb(232, 244, 248);
             margin: 20px;
             padding: 15px;
             border-radius: 6px;
-            border: 1px solid #1c4426;
+            border: 1px solidrgb(53, 131, 73);
+        }
+        .order-box h2{
+            color:rgb(232, 244, 248);
         }
         .order-row {
             padding: 10px 0;
-            border-bottom: 1px solid #1c4426;
+            border-bottom: 1px solid rgb(180, 226, 242);
         }
         .email-notification-confirm {
             background:rgb(232, 244, 248);
