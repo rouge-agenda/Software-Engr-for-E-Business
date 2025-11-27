@@ -1,5 +1,13 @@
 <?php
 session_start();
+
+//Must be logged in to access checkout
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php?redirect = checkout.php");
+    exit();
+}
+
+
 $cart = $_SESSION['cart'] ?? [];
 ?>
 <!DOCTYPE html>
@@ -95,6 +103,15 @@ $cart = $_SESSION['cart'] ?? [];
 
 <h2>Your Cart</h2>
 
+<?php
+if (isset($_SESSION['payment_error'])) {
+    echo "<div style='background: rgb(212, 225, 237); color: rgb(22, 158, 192); padding: 15px; border-radius: 5px; margin-bottom: 20px;'>";
+    echo "<strong>Payment Error:</strong> " . htmlspecialchars($_SESSION['payment_error']);
+    echo "</div>";
+    unset($_SESSION['payment_error']);
+}
+?>
+
 <?php if (empty($cart)): ?>
     <p style="text-align:center;">Your cart is empty.</p>
 
@@ -177,7 +194,7 @@ $cart = $_SESSION['cart'] ?? [];
                 <input type="text" name="cvv" placeholder="123" required>
             </div>
         </div>
-            <button class="btn" onclick="window.location.href='order_complete.php'">Place Order</button>
+            <button type="submit" class="btn" >Place Order</button>
 
     </form>
 </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 28, 2025 at 06:46 PM
+-- Generation Time: Nov 26, 2025 at 07:29 PM
 -- Server version: 5.7.24
 -- PHP Version: 8.3.1
 
@@ -49,7 +49,6 @@ INSERT INTO `customer` (`custID`, `fName`, `lName`, `email`, `password`, `street
 (90234, 'Dilllon', 'Maldune', 'dmaldune39@yahoo.com', '$2y$10$I8zPK25GPoosziEcamq7xOKi7Smll/E.IZt4fy8/fEdZAK3Tz6oD2', '220 Upland Avenue', 'Lima', 'Ohio', 45801, '5673283585');
 
 -- --------------------------------------------------------
-
 --
 -- Table structure for table `orderline`
 --
@@ -61,7 +60,7 @@ CREATE TABLE `orderline` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `orderline`
+-- Dumping data for table `orderline.`
 --
 
 INSERT INTO `orderline` (`orderID`, `productID`, `quantity`) VALUES
@@ -80,17 +79,18 @@ INSERT INTO `orderline` (`orderID`, `productID`, `quantity`) VALUES
 CREATE TABLE `orders` (
   `orderID` int(9) UNSIGNED NOT NULL,
   `custID` int(9) UNSIGNED NOT NULL,
-  `orderdate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `orderdate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `completed` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`orderID`, `custID`, `orderdate`) VALUES
-(1, 90234, '2025-10-22 13:25:21'),
-(2, 80265, '2025-10-24 06:33:11'),
-(4, 80265, '2025-10-28 13:29:43');
+INSERT INTO `orders` (`orderID`, `custID`, `orderdate`, `completed`) VALUES
+(1, 90234, '2025-10-22 13:25:21', 1),
+(2, 80265, '2025-10-24 06:33:11', 1),
+(4, 80265, '2025-10-28 13:29:43', 0);
 
 -- --------------------------------------------------------
 

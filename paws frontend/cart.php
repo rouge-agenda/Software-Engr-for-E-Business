@@ -1,5 +1,13 @@
 <?php
 session_start();
+
+$total = 0;
+if (isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
+    foreach ($_SESSION['cart'] as $item) {
+        $total += $item['price'];
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -130,7 +138,7 @@ session_start();
         } else {
           $total = 0;
 
-        foreach ($_SESSION['cart'] as $item) {
+        foreach ($_SESSION['cart'] as $index => $item) {
           echo "<div class='cart'>";
           echo "<strong>" . $item['productName'] . "</strong>";
           echo "<price>" . "$" . $item['price'] . "</span>";

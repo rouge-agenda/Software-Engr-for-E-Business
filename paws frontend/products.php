@@ -172,7 +172,7 @@ $result = mysqli_query($conn, $sql);
                 echo "<p><strong>Price:</strong> $" . $row['price'] . "</p>";
                 echo "
                 <form action='add_to_cart.php' method='POST'>
-                    <input type='hidden' name='productid' value='" . $row['productid'] . "'>
+                    <input type='hidden' name='productid' value='" . $row['productID'] . "'>
                     <input type='hidden' name='productName' value='" . $row['productName'] . "'>
                     <input type='hidden' name='price' value='" . $row['price'] . "'>
                     <button type='submit' class='cart-btn'>Add to Cart</button>
